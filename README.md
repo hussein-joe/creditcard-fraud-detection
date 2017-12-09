@@ -4,7 +4,7 @@ Credit card fraud detection challenge developed using SpringBoot and Java 8.
 ## Getting Started
 This is a command line application which you can run using the following command (in the project root directory)
 ```
-./mvnw -q spring-boot:run
+mvn -q spring-boot:run
 ```
 You ned to provide the following parameters
 - Fraud detection date, it is expected to type it in the format ```yyyy-mm-dd```.
@@ -25,7 +25,7 @@ file attached with this challenge contains transactions in this day.
 
 ### Prerequisites
 - Java 8
-- Maven (it will be downloaded if not installed)
+- Maven
 
 ### Application design
 In this challenge I tried to use different programming styles. For example I used the concept of

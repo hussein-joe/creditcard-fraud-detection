@@ -7,6 +7,7 @@ import com.hussein.challenges.creditcardfrauddetection.listeners.DailyFraudDetec
 import com.hussein.challenges.creditcardfrauddetection.listeners.FraudCreditCardsContainer;
 import com.hussein.challenges.creditcardfrauddetection.reader.ConsoleDevice;
 import com.hussein.challenges.creditcardfrauddetection.reader.ConsoleParameterReader;
+import com.hussein.challenges.creditcardfrauddetection.reader.file.FileReaderAdapter;
 import com.hussein.challenges.creditcardfrauddetection.reader.file.TransactionFileReaderAdapter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -21,7 +22,7 @@ public class CreditCardFraudDetectionCommandLineRunner implements CommandLineRun
     @Autowired
     private ConsoleParameterReader consoleParameterReader;
     @Autowired
-    private TransactionFileReaderAdapter transactionFileReaderAdapter;
+    private FileReaderAdapter transactionFileReaderAdapter;
     @Autowired
     private FraudCreditCardsContainer fraudCreditCardsContainer;
     @Autowired

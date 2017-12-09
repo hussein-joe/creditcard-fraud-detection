@@ -12,25 +12,19 @@ import java.util.stream.Stream;
 
 /**
  * An adapter which reads the lines from file and send to a message channel
+ * This is an example of Template design pattern.
  */
-public class TransactionFileReaderAdapter {
-    private final FileRecordMapper<TransactionRecordDto> fileRecordMapper;
+public class TransactionFileReaderAdapter extends AbstractFileLinesReaderAdapter<TransactionRecordDto> {
     private final MessageChannel<TransactionRecordDto> outputChannel;
 
-    public TransactionFileReaderAdapter(FileRecordMapper<TransactionRecordDto> fileRecordMapper, MessageChannel<TransactionRecordDto> outputChannel) {
-        this.fileRecordMapper = fileRecordMapper;
+    public TransactionFileReaderAdapter(FileRecordMapper<TransactionRecordDto> fileRecordMapper,
+                                        MessageChannel<TransactionRecordDto> outputChannel) {
+        super(fileRecordMapper);
         this.outputChannel = outputChannel;
     }
 
-    public void consumeFileLines(Path path) throws IOException {
-        Stream<String> fileLines = Files.lines(path);
-        Consumer<String> transactionConsumer = s -> {
-            TransactionRecordDto transactionRecordDto = fileRecordMapper.map(s);
-            outputChannel.send(new Message<>(transactionRecordDto));
-        };
-
-        fileLines.map(String::trim)
-                .filter(s -> ! s.isEmpty())
-                .forEach(transactionConsumer);
+    @Override
+    protected Consumer<TransactionRecordDto> consumeLine() {
+        return s -> outputChannel.send( new Message<>(s) );
     }
 }

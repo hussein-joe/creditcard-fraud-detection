@@ -6,6 +6,7 @@ import com.hussein.challenges.creditcardfrauddetection.dto.TransactionRecordDto;
 import com.hussein.challenges.creditcardfrauddetection.listeners.FraudCreditCardsContainer;
 import com.hussein.challenges.creditcardfrauddetection.reader.ConsoleDevice;
 import com.hussein.challenges.creditcardfrauddetection.reader.ConsoleParameterReader;
+import com.hussein.challenges.creditcardfrauddetection.reader.file.FileReaderAdapter;
 import com.hussein.challenges.creditcardfrauddetection.reader.file.TransactionFileReaderAdapter;
 import com.hussein.challenges.creditcardfrauddetection.reader.file.TransactionRecordMapper;
 import org.springframework.context.annotation.Bean;
@@ -18,7 +19,7 @@ import org.springframework.context.annotation.Configuration;
 public class StreamBasedApplicationConfig {
 
     @Bean
-    public TransactionFileReaderAdapter transactionFileReaderAdapter(MessageChannel<TransactionRecordDto> outputChannel) {
+    public FileReaderAdapter transactionFileReaderAdapter(MessageChannel<TransactionRecordDto> outputChannel) {
         return new TransactionFileReaderAdapter(new TransactionRecordMapper(),
                 outputChannel);
     }

@@ -36,7 +36,7 @@ public class TransactionRecordMapperTest {
         FileRecordSource recordSource = givenTransactionFields(CREDIT_CARD_HASH,
                 TRANSACTION_TIME.format(DateTimeFormatter.ISO_DATE_TIME), String.valueOf(TRANSACTION_TOTAL));
 
-        TransactionRecordDto actual = recordMapper.map(recordSource, 0);
+        TransactionRecordDto actual = recordMapper.map(recordSource);
 
         assertThat(actual).isEqualToComparingFieldByField(new
                 TransactionRecordDto(CREDIT_CARD_HASH, TRANSACTION_TIME, TRANSACTION_TOTAL));
@@ -48,7 +48,7 @@ public class TransactionRecordMapperTest {
         FileRecordSource recordSource = givenTransactionFields(CREDIT_CARD_HASH,
                 transactionTime, String.valueOf(TRANSACTION_TOTAL));
 
-        assertThatThrownBy(() -> recordMapper.map(recordSource, 0)).isInstanceOf(DateTimeParseException.class)
+        assertThatThrownBy(() -> recordMapper.map(recordSource)).isInstanceOf(DateTimeParseException.class)
                 .hasMessageContaining("Text '" + transactionTime + "' could not be parsed at index 0");
     }
 
@@ -58,7 +58,7 @@ public class TransactionRecordMapperTest {
         FileRecordSource recordSource = givenTransactionFields(CREDIT_CARD_HASH,
                 TRANSACTION_TIME.format(DateTimeFormatter.ISO_DATE_TIME), transactionTotal);
 
-        assertThatThrownBy(() -> recordMapper.map(recordSource, 0)).isInstanceOf(NumberFormatException.class)
+        assertThatThrownBy(() -> recordMapper.map(recordSource)).isInstanceOf(NumberFormatException.class)
                 .hasMessageContaining("For input string: \"" + transactionTotal + "\"");
     }
 

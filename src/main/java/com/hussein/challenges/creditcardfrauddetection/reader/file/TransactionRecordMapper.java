@@ -10,7 +10,7 @@ public class TransactionRecordMapper implements FileRecordMapper<TransactionReco
     private static final int TRANSACTION_TOTAL_INDEX = 2;
 
     @Override
-    public TransactionRecordDto map(FileRecordSource recordSource, int rowNumber) {
+    public TransactionRecordDto map(FileRecordSource recordSource) {
         return new TransactionRecordDto(recordSource.get(CREDIT_HASH_INDEX),
                 formatTransactionTime(recordSource.get(TRANSACTION_TIME_INDEX)),
                 Double.valueOf(recordSource.get(TRANSACTION_TOTAL_INDEX)));

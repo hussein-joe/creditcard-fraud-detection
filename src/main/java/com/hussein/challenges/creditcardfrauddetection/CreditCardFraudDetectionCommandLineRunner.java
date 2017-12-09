@@ -41,8 +41,9 @@ public class CreditCardFraudDetectionCommandLineRunner implements CommandLineRun
 
         transactionFileReaderAdapter.consumeFileLines(transactionFile);
         fraudCreditCardsContainer.consumeFraudCreditCards(s->
-                consoleDevice.writeLine("Credit card with hash %s is fraud with total amount %s",
-                    s.getCreditCardHash(), s.getTotalTransactionAmount()));
+                consoleDevice.writeLine("Credit card with hash %s is fraud with total amount %s in %s",
+                    s.getCreditCardHash(), s.getTotalTransactionAmount(),
+                        s.getFraudDate()));
     }
 
     private void configureFraudDetectionChannelListeners(UserParameters userParameters) {

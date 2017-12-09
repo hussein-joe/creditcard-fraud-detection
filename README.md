@@ -20,12 +20,12 @@ __If the application detects any frauds, it will print all of them and then exit
 When you run the application, it will take some time without showing any logging messages, 
 I disabled SLF4J logging(ERROR level), and maven as well.
 
-While tsting I used ```2017-12-09``` as fraud date, and ```100``` as threshold, only because the sample 
+While testing I used ```2017-12-09``` as fraud date, and ```100``` as threshold, only because the sample 
 file attached with this challenge contains transactions in this day. 
 
 ### Prerequisites
 - Java 8
-- Maven (it will be downloaded if it is not installed)
+- Maven (it will be downloaded if not installed)
 
 ### Application design
 In this challenge I tried to use different programming styles. For example I used the concept of
@@ -33,15 +33,15 @@ stream processing, message channel(to implement pub/sub).
 The code is divided into the following parts
 
 - Transaction Reader: It reads transactions from a file, use mapper to convert lines to DTOs, and then hand it to a 
-message channel. The reader in this case is a publisher of events transaction record is the message's payload'.
+message channel. The reader in this case is a publisher of events where transaction record is the message's payload'.
 - Message channel: The channel for publishing events from supplier to one or many listeners. 
 Using this message channel, the publisher does not need to know any thing about how the published messages
 will be processed. Also, the consumers from the other side are not coupled to the publishers.
-For simplicity, I implemented a simple direct synchronous channel where publishing and consumption share
-the same thread. To support parallel-processing for example, it would be easy to change the channel without touching 
-the publishers and the listeners.
+For simplicity, I implemented a simple direct synchronous channel where publishing and consumption of messages share
+the same thread. To support parallel-processing for example, it would be easy to change the channel without 
+touching neither the publishers nor the listeners.
 - Channel listener: There is only one listener in this application which is responsible for detecting
-the fraud credit card transactions. For simplicity, I use a simple in-memory repository to save fraud transactions.
+the fraud credit card transactions. For simplicity, I used a simple in-memory repository to save fraud transactions.
 Another examples of listeners can be easily plugged into the channel. Like for example
     - __Publish events to Kafka__
     - Send a command to __a CQRS event-sourcing service__.

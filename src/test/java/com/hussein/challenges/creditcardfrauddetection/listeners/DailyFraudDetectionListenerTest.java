@@ -1,7 +1,7 @@
 package com.hussein.challenges.creditcardfrauddetection.listeners;
 
 
-import com.hussein.challenges.creditcardfrauddetection.UserParameters;
+import com.hussein.challenges.creditcardfrauddetection.config.UserParameters;
 import com.hussein.challenges.creditcardfrauddetection.channel.Message;
 import com.hussein.challenges.creditcardfrauddetection.dto.TransactionRecordDto;
 import org.junit.Before;
@@ -48,7 +48,8 @@ public class DailyFraudDetectionListenerTest {
         listener.update(observable, new Message<>(transaction1));
         listener.update(observable, new Message<>(transaction2));
 
-        verify(fraudCreditCardsContainer).addFraudCreditCard(CREDIT_CARD_HASH, 102);
+        verify(fraudCreditCardsContainer).addFraudCreditCard(CREDIT_CARD_HASH, TRANSACTION_TIME.toLocalDate(),
+                102);
     }
 
     @Test
@@ -63,6 +64,7 @@ public class DailyFraudDetectionListenerTest {
         listener.update(observable, new Message<>(transaction1));
         listener.update(observable, new Message<>(transaction2));
 
-        verify(fraudCreditCardsContainer, never()).addFraudCreditCard(CREDIT_CARD_HASH, 102);
+        verify(fraudCreditCardsContainer, never()).addFraudCreditCard(CREDIT_CARD_HASH, TRANSACTION_TIME.toLocalDate(),
+                102);
     }
 }

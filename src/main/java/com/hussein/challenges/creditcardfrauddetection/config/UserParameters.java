@@ -1,4 +1,4 @@
-package com.hussein.challenges.creditcardfrauddetection;
+package com.hussein.challenges.creditcardfrauddetection.config;
 
 import java.time.LocalDate;
 
@@ -6,7 +6,7 @@ public class UserParameters {
     private final LocalDate checkDate;
     private final double totalThreshold;
 
-    UserParameters(LocalDate checkDate, double totalThreshold) {
+    private UserParameters(LocalDate checkDate, double totalThreshold) {
         this.checkDate = checkDate;
         this.totalThreshold = totalThreshold;
     }

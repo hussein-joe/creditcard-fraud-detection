@@ -1,5 +1,8 @@
 package com.hussein.challenges.creditcardfrauddetection.dto;
 
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
+
 import java.time.LocalDateTime;
 
 public class TransactionRecordDto {
@@ -24,5 +27,15 @@ public class TransactionRecordDto {
 
     public double getTransactionTotal() {
         return transactionTotal;
+    }
+
+    @Override
+    public boolean equals(final Object other) {
+        return EqualsBuilder.reflectionEquals(this, other);
+    }
+
+    @Override
+    public int hashCode() {
+        return HashCodeBuilder.reflectionHashCode(this);
     }
 }

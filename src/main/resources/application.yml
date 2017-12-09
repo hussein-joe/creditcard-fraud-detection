@@ -1,0 +1,8 @@
+
+application:
+  config:
+    transaction-file-path: src/main/resources/transactions.txt
+logging:
+  file: fraud_detection.log
+  level:
+    root: ERROR

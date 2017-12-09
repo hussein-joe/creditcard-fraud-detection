@@ -19,9 +19,9 @@ import static org.mockito.MockitoAnnotations.initMocks;
  */
 public class DirectTransactionMessageChannelTest {
 
-    private static final String CREDIT_CARD_HASH = "1234";
-    private static final double TRANSACTION_TOTAL = 12.50;
-    public static final LocalDateTime TRANSACTION_TIME = LocalDateTime.of(2017, Month.DECEMBER, 7, 19, 50);
+    private static final String CREDIT_CARD_HASH = "10d7ce2f43e35fa57d1bbf8b1e2";
+    private static final double TRANSACTION_TOTAL = 10.00;
+    private static final LocalDateTime TRANSACTION_TIME = LocalDateTime.parse("2014-04-29T13:15:54");
 
     private DirectTransactionMessageChannel directTransactionMessageChannel;
     @Mock

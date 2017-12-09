@@ -1,6 +1,7 @@
 package com.hussein.challenges.creditcardfrauddetection.reader;
 
-import com.hussein.challenges.creditcardfrauddetection.UserParameters;
+import com.hussein.challenges.creditcardfrauddetection.config.UserParameters;
+import com.hussein.challenges.creditcardfrauddetection.config.UserParameters.UserParametersBuilder;
 
 import java.time.LocalDate;
 
@@ -13,7 +14,7 @@ public class ConsoleParameterReader {
     }
 
     public UserParameters read() {
-        UserParameters.UserParametersBuilder userParametersBuilder = new UserParameters.UserParametersBuilder();
+        UserParametersBuilder userParametersBuilder = new UserParametersBuilder();
         userParametersBuilder.setCheckDate(readDate());
         userParametersBuilder.setTotalThreshold(readThreshold());
 

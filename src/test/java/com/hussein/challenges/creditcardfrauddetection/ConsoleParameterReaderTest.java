@@ -1,5 +1,7 @@
 package com.hussein.challenges.creditcardfrauddetection;
 
+import com.hussein.challenges.creditcardfrauddetection.config.UserParameters;
+import com.hussein.challenges.creditcardfrauddetection.config.UserParameters.UserParametersBuilder;
 import com.hussein.challenges.creditcardfrauddetection.reader.ConsoleDevice;
 import com.hussein.challenges.creditcardfrauddetection.reader.ConsoleParameterReader;
 import org.junit.Before;
@@ -23,7 +25,7 @@ public class ConsoleParameterReaderTest {
     private ConsoleDevice console;
 
     @Before
-    public void setUp() throws Exception {
+    public void setUp() {
         initMocks(this);
         consoleParameterReader = new ConsoleParameterReader(console);
     }
@@ -36,8 +38,10 @@ public class ConsoleParameterReaderTest {
 
         UserParameters actual = consoleParameterReader.read();
 
-        assertThat(actual).isEqualToComparingFieldByField(new UserParameters(LocalDate.parse(FRAUD_DETECTION_DATE),
-                Double.valueOf(FRAUD_THRESHOLD)));
+        assertThat(actual).isEqualToComparingFieldByField(
+                new UserParametersBuilder().setCheckDate(LocalDate.parse(FRAUD_DETECTION_DATE))
+                        .setTotalThreshold(Double.valueOf(FRAUD_THRESHOLD)).build()
+        );
     }
 
     @Test
@@ -50,8 +54,10 @@ public class ConsoleParameterReaderTest {
         UserParameters actual = consoleParameterReader.read();
 
         verify(console).write("Please insert the date to check the fraud in (it needs to be in the format yyyy-mm-dd): ");
-        assertThat(actual).isEqualToComparingFieldByField(new UserParameters(LocalDate.parse(FRAUD_DETECTION_DATE),
-                Double.valueOf(FRAUD_THRESHOLD)));
+        assertThat(actual).isEqualToComparingFieldByField(
+                new UserParametersBuilder().setCheckDate(LocalDate.parse(FRAUD_DETECTION_DATE))
+                        .setTotalThreshold(Double.valueOf(FRAUD_THRESHOLD)).build()
+        );
     }
 
     @Test
@@ -64,7 +70,9 @@ public class ConsoleParameterReaderTest {
         UserParameters actual = consoleParameterReader.read();
 
         verify(console).write("Please insert the fraud detection threshold (it needs to be in the numbers with decimal points): ");
-        assertThat(actual).isEqualToComparingFieldByField(new UserParameters(LocalDate.parse(FRAUD_DETECTION_DATE),
-                Double.valueOf(FRAUD_THRESHOLD)));
+        assertThat(actual).isEqualToComparingFieldByField(
+                new UserParametersBuilder().setCheckDate(LocalDate.parse(FRAUD_DETECTION_DATE))
+                        .setTotalThreshold(Double.valueOf(FRAUD_THRESHOLD)).build()
+        );
     }
 }

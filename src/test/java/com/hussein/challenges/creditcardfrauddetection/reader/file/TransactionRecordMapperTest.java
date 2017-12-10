@@ -1,4 +1,4 @@
-package com.hussein.challenges.creditcardfrauddetection;
+package com.hussein.challenges.creditcardfrauddetection.reader.file;
 
 import com.google.common.base.Joiner;
 import com.hussein.challenges.creditcardfrauddetection.dto.TransactionRecordDto;

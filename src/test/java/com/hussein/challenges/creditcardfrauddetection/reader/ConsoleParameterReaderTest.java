@@ -1,4 +1,4 @@
-package com.hussein.challenges.creditcardfrauddetection;
+package com.hussein.challenges.creditcardfrauddetection.reader;
 
 import com.hussein.challenges.creditcardfrauddetection.config.UserParameters;
 import com.hussein.challenges.creditcardfrauddetection.config.UserParameters.UserParametersBuilder;

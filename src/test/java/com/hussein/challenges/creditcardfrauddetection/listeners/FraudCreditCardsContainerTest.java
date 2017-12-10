@@ -38,7 +38,7 @@ public class FraudCreditCardsContainerTest {
     public void shouldConsumeAllSavedFraudCreditCards() {
         fraudCreditCardsContainer.addFraudCreditCard(CREDIT_CARD_HASH,
                 TRANSACTION_TIME.toLocalDate(), TRANSACTION_TOTAL);
-        //Add another fraud credit card, same fields just for simplicity
+        //Added another fraud credit card, same fields just for simplicity
         fraudCreditCardsContainer.addFraudCreditCard(CREDIT_CARD_HASH,
                 TRANSACTION_TIME.toLocalDate(), TRANSACTION_TOTAL);
 

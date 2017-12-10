@@ -8,7 +8,6 @@ import com.hussein.challenges.creditcardfrauddetection.listeners.FraudCreditCard
 import com.hussein.challenges.creditcardfrauddetection.reader.ConsoleDevice;
 import com.hussein.challenges.creditcardfrauddetection.reader.ConsoleParameterReader;
 import com.hussein.challenges.creditcardfrauddetection.reader.file.FileReaderAdapter;
-import com.hussein.challenges.creditcardfrauddetection.reader.file.TransactionFileReaderAdapter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;

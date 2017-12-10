@@ -1,7 +1,7 @@
 package com.hussein.challenges.creditcardfrauddetection.listeners;
 
-import com.hussein.challenges.creditcardfrauddetection.config.UserParameters;
 import com.hussein.challenges.creditcardfrauddetection.channel.Message;
+import com.hussein.challenges.creditcardfrauddetection.config.UserParameters;
 import com.hussein.challenges.creditcardfrauddetection.dto.TransactionRecordDto;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

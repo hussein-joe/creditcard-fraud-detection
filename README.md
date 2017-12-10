@@ -29,7 +29,7 @@ file attached with this challenge contains transactions in this day.
 
 ### Application design
 In this challenge I tried to use different programming styles. For example I used the concept of
-stream processing, message channel(to implement pub/sub). 
+stream processing, and message channel(to implement pub/sub). 
 The code is divided into the following parts
 
 - Transaction Reader: It reads transactions from a file, use mapper to convert lines to DTOs, and then hand it to a 
@@ -64,4 +64,4 @@ ready to be used with some custom coding.
 - Use **Reactive/RXJava** to implement parallel-processing, streaming and reactive programming, back-pressure, ...
 - Use Java 8 features like stream and few custom classes.
  
-I added comments in some of the classes to describe why I added these classes.
+I added comments in some of the classes to describe why I added them.
